@@ -4,7 +4,7 @@
 <div class="container" style="margin-top:100px;">
   <h3>Aggiungi un nuovo Comic all'archivio</h3>
 
-  <!-- @if ($errors->any()) 
+ @if ($errors->any()) 
   <div class="alert alert-danger">
     <ul>
         @foreach ($errors->all() as $error )
@@ -16,7 +16,7 @@
     </ul>
   </div>
 
-  @endif -->
+  @endif 
 
 
   <form action="{{ route('admin.projects.store') }}" method="POST">
@@ -29,24 +29,27 @@
     </div>
 
     <div class="mb-3">
-      <label for="description" class="form-label">Descrizione</label>
-      <textarea class="form-control" id="description" name="description" rows="3"> {{old('description')}}</textarea>
-    </div>
-
-
-    <div class="mb-3">
       <label for="used_technologies" class="form-label">Tecnologie Usate</label>
       <input type="text" class="form-control" id="used_technologies" name="used_technologies" value="{{old('used_technologies')}}">
     </div>
 
     <div class="mb-3">
-      <label for="sale_date" class="form-label">Data di uscita</label>
-      <input type="text" class="form-control" id="sale_date" name="sale_date" value="{{old('sale_date')}}">
-    </div>
+        <label for="status" class="form-label">Tipologia</label>
+        <select class="form-select" id="status" name="status">
+          <option >Seleziona</option>
+          <option @selected(old('status') === 'ongoing') value="ongoing">In lavorazione</option>
+          <option @selected(old('status') === 'completed') value="completed">Completato</option>
+        </select>
+      </div>
 
     <div class="mb-3">
       <label for="slug" class="form-label">Slug</label>
-      <input type="text" class="form-control" id="slug" name="slug" value="{{old('slug')}}">
+      <input type="text" class="form-control" id="slug" name="slug" value="{{old('slug')}}" readonly>
+    </div>
+
+    <div class="mb-3">
+      <label for="description" class="form-label">Descrizione</label>
+      <textarea class="form-control" id="description" name="description" rows="3"> {{old('description')}}</textarea>
     </div>
 
   

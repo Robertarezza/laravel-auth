@@ -24,7 +24,12 @@
 <body>
   <div id="app">
 
-    <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-2 shadow">
+    <header class="navbar navbar-dark bg-dark flex-md-nowrap p-2 shadow" 
+    style="
+    position: fixed;
+    top: 0;
+    z-index: 1020;
+    width: 100%;">
       <div class="row justify-content-between">
         <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="/">BoolPress</a>
         <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
@@ -49,7 +54,7 @@
         <!-- Definire solo parte del menu di navigazione inizialmente per poi
         aggiungere i link necessari giorno per giorno
         -->
-        <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-dark navbar-dark sidebar collapse">
+        <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-dark navbar-dark sidebar collapse" style="position: fixed; top: 51px; left: 0; height: 100vh;">
           <div class="position-sticky pt-3">
             <ul class="nav flex-column">
               <li class="nav-item">
@@ -69,20 +74,26 @@
                 <div class="collapse" id="projectsDropdown">
                   <ul class="nav flex-column ms-3">
                     <li class="nav-item">
-                      <a class="nav-link text-white  d-flex align-items-center gap-2" href="{{ route('admin.projects.create') }}">
-                        <i class="fa-solid fa-plus fa-sm fa-fw"></i>
-                        <span class="flex-fill">Aggiungi Nuovo Progetto</span>
+                      <a class="nav-link text-white  d-flex align-items-center gap-2" href="{{ route('admin.projects.index') }}">
+                        <i class="fa-solid fa-eye fa-sm fa-fw me-2"></i>
+                        <span class="flex-fill">Vedi Titti</span>
                       </a>
                     </li>
-                  </ul>
+                    <li class="nav-item">
+                    <a class="nav-link text-white  d-flex align-items-center gap-2" href="{{ route('admin.projects.create') }}">
+                      <i class="fa-solid fa-plus fa-sm fa-fw"></i>
+                      <span class="flex-fill">Aggiungi Nuovo Progetto</span>
+                    </a>
               </li>
+            </ul>
+            </li>
             </ul>
 
 
           </div>
         </nav>
 
-        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 mt-5">
           @yield('content')
         </main>
       </div>

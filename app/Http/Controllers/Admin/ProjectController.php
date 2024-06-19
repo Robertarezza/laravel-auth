@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreProjectRequest;
 use App\Models\Project;
 use Illuminate\Http\Request;
 use PhpParser\Node\Stmt\Return_;
@@ -12,10 +13,18 @@ class ProjectController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $project= Project::all();
-        return view('admin.projects.index', compact('project'));
+        $status = request()->input('status', 'all');
+
+    if ($status === 'all') {
+        $projects = Project::all();
+    } else {
+        $projects = Project::where('status', $status)->get();
+    }
+
+    return view('admin.projects.index', compact('projects'));
+        
     }
 
     /**
@@ -29,7 +38,7 @@ class ProjectController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreProjectRequest $request)
     {
         $data= $request->all();
         $project= new Project();
