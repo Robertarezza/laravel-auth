@@ -23,6 +23,7 @@ class ProjectsTableSeeder extends Seeder
         $newProject->description = $Faker->paragraph(6);
         $newProject->slug= Str::slug($newProject->title);
         $newProject->status = $Faker->randomElement(['ongoing', 'completed']);
+        $newProject->used_technologies= $Faker->randomElement(['HTML', 'CSS', 'JAVASCRIPT','PHP','VUE.JS','LARAVEL']);
 
         $newProject->save();
         
