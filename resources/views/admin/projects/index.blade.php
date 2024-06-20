@@ -45,11 +45,17 @@
                     <i class="fas fa-question-circle" title="Unknown Status"></i>
                     @endif
                 </td>
-                <td>
-                <a href="{{route('admin.projects.show', ['project'=>$project->slug]) }}" class="btn btn-info">
-                <i class="fa-solid fa-circle-info" title="Dettagli"></i>
+                <td class="d-flex gap-2">
+                    <a href="{{route('admin.projects.show', ['project'=>$project->slug]) }}" class="btn btn-info">
+                        <i class="fa-solid fa-circle-info" title="Dettagli"></i>
                     </a>
-                    </td>
+                    <form action="{{route('admin.projects.destroy', ['project'=>$project->slug]) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button class="btn btn-danger"  onclick="return confirm('Sei sicuro di volerlo eliminare {{$project->title}}? ')"><i class="fa-solid fa-trash-can "></i></button>
+
+                    </form> 
+                </td>
             </tr>
             @endforeach
 
