@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreProjectRequest;
 use App\Models\Project;
 use Illuminate\Http\Request;
+use illuminate\Support\Str;
 use PhpParser\Node\Stmt\Return_;
 
 class ProjectController extends Controller
@@ -43,6 +44,7 @@ class ProjectController extends Controller
         $data= $request->all();
         $project= new Project();
         $project->fill($data);
+        $project->slug = Str::slug($request->title);
         $project->save();
         return redirect()-> route('admin.projects.index');
     }
@@ -50,9 +52,9 @@ class ProjectController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Project $project)
     {
-        //
+        return view('admin.projects.show', compact('project'));
     }
 
     /**

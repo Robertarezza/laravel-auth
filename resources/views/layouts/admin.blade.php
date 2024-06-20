@@ -8,7 +8,7 @@
   <!-- CSRF Token -->
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
-  <title>{{ config('app.name', 'Laravel') }}</title>
+  <title>BoolPress</title>
 
   <!-- Fontawesome 6 cdn -->
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css' integrity='sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==' crossorigin='anonymous' referrerpolicy='no-referrer' />
@@ -58,12 +58,12 @@
           <div class="position-sticky pt-3">
             <ul class="nav flex-column">
               <li class="nav-item">
-                <a class="nav-link text-white {{ Route::currentRouteName() == 'dashboard' ? 'bg-secondary' : '' }}" href="{{ route('admin.dashboard') }}">
+                <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.dashboard' ? 'bg-secondary' : '' }}" href="{{ route('admin.dashboard') }}">
                   <i class="fa-solid fa-tachometer-alt fa-lg fa-fw"></i> Dashboard
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link text-white {{ Route::currentRouteName() == 'dashboard' ? 'bg-secondary' : '' }}" href="{{ route('admin.projects.index') }}" data-bs-toggle="collapse" data-bs-target="#projectsDropdown" aria-expanded="false" aria-controls="projectsDropdown">
+                <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.projects.index' ? 'bg-secondary' : '' }}" href="{{ route('admin.projects.index') }}" data-bs-toggle="collapse" data-bs-target="#projectsDropdown" aria-expanded="false" aria-controls="projectsDropdown">
                   <span>
                     <span>
                       <i class="fa-solid fa-diagram-project fa-lg fa-fw"></i> I miei Progetti

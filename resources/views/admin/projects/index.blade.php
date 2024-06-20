@@ -23,7 +23,7 @@
             <tr>
                 <th scope="col">Id</th>
                 <th scope="col">Titolo</th>
-                <th scope="col">Descrizione</th>
+                <th scope="col">Slug</th>
                 <th scope="col">Tecnologie</th>
                 <th scope="col">stato</th>
                 <th scope="col">Azioni</th>
@@ -35,7 +35,7 @@
             <tr>
                 <th scope="row">{{$project->id}}</th>
                 <td>{{$project->title}}</td>
-                <td>{{$project->description}}</td>
+                <td>{{$project->slug}}</td>
                 <td>{{$project->used_technologies}}</td>
                 <td>@if($project->status == 'ongoing')
                     <i class="fas fa-spinner fa-spin" title="In Progress"></i>
@@ -45,6 +45,11 @@
                     <i class="fas fa-question-circle" title="Unknown Status"></i>
                     @endif
                 </td>
+                <td>
+                <a href="{{route('admin.projects.show', ['project'=>$project->slug]) }}" class="btn btn-info">
+                <i class="fa-solid fa-circle-info" title="Dettagli"></i>
+                    </a>
+                    </td>
             </tr>
             @endforeach
 
