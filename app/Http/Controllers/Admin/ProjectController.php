@@ -46,7 +46,7 @@ class ProjectController extends Controller
         $project->fill($data);
         $project->slug = Str::slug($request->title);
         $project->save();
-        return redirect()-> route('admin.projects.index');
+        return redirect()-> route('admin.projects.show', $project->slug);
     }
 
     /**
@@ -60,17 +60,20 @@ class ProjectController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Project $project)
     {
-        //
+        return view('admin.projects.edit', compact('project'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Project $project)
     {
-        //
+        $data = $request->all();
+        $project->slug = Str::slug($request->title);
+        $project->update($data);
+        return redirect()->route('admin.projects.show', ['project'=> $project->slug]);
     }
 
     /**
