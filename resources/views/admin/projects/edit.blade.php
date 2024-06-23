@@ -5,20 +5,9 @@
 <div class="container" style="margin-top:100px;">
 
     <!-- validazione -->
-    <!-- @if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error )
-            <li>
-                {{$error}}
-            </li>
 
-            @endforeach
-        </ul>
-    </div>
-    @endif -->
     @include('partials.errors')
-   
+
     <!-- /validazione -->
     <h1>Modifica: {{$project->title}}</h1>
     <form action="{{ route('admin.projects.update', ['project'=>$project->slug]) }}" method="POST" enctype="multipart/form-data">
@@ -56,13 +45,13 @@
         </div>
 
         <div>
-      <label for="cover_image">Immagine di copertina</label>
-      <input type="file" name="cover_image" id="cover_image">
-    </div>
-    <div>
-      <h4>Preview dell'immagine</h4>
-      <img src="{{ asset('storage/' . $project->cover_image) }}" alt="">
-    </div>
+            <label for="cover_image">Immagine di copertina</label>
+            <input type="file" name="cover_image" id="cover_image">
+        </div>
+        <div>
+            <h4>Preview dell'immagine</h4>
+            <img id="cover_image_preview" src="{{ asset('storage/' . $project->cover_image) }}" alt="">
+        </div>
 
         <div class="d-flex justify-content-around mt-3 mb-3 align-content-center">
             <a href="{{route('admin.projects.index') }}" class="btn btn-outline-secondary ">Indietro</a>
