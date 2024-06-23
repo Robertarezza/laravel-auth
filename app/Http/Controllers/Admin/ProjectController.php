@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreProjectRequest;
+use App\Http\Requests\UpdateProjectRequest;
 use App\Models\Project;
 use Illuminate\Http\Request;
 use illuminate\Support\Str;
@@ -42,6 +43,9 @@ class ProjectController extends Controller
     public function store(StoreProjectRequest $request)
     {
         $data= $request->all();
+        //oppure al posto di request->all(), 
+        //mettiamo $request->validated() in modo da prendere solo i dati che sono stati validati
+
         $project= new Project();
         $project->fill($data);
         $project->slug = Str::slug($request->title);
@@ -68,12 +72,12 @@ class ProjectController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Project $project)
+    public function update(UpdateProjectRequest $request, Project $project)
     {
         $data = $request->all();
         $project->slug = Str::slug($request->title);
         $project->update($data);
-        return redirect()->route('admin.projects.show', ['project'=> $project->slug]);
+        return redirect()->route('admin.projects.show', $project->slug)->with('message',  $project->title .  ' è stato modificato');
     }
 
     /**
@@ -82,6 +86,6 @@ class ProjectController extends Controller
     public function destroy(Project $project)
     {
         $project->delete();
-        return redirect()->route('admin.projects.index');
+        return redirect()->route('admin.projects.index')->with('message', $project->title . ' è stato eliminato');
     }
 }

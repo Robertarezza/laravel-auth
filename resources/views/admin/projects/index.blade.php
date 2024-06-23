@@ -3,6 +3,8 @@
 
 @section('content')
 <div class="container mt-5">
+
+    @include('partials.session_message')
     <div class="d-flex justify-content-around mt-5">
         <h1>I miei Progetti</h1>
         <form action="{{ route('admin.projects.index') }}" method="GET" class="d-flex align-items-center justify-content-center gap-3">
@@ -17,6 +19,7 @@
             <button type="submit" class="btn btn-primary " style="margin-top: 15px;">Filtra</button>
         </form>
     </div>
+
 
     <table class="table">
         <thead>

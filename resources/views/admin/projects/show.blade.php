@@ -2,6 +2,8 @@
 
 @section('content')
 <div class="container-fluid  mt-5">
+
+@include('partials.session_message')
     <div class="row  justify-content-center">
         <div class="col-12 ">
             <div class="card w-100">

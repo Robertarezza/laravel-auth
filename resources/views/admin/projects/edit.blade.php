@@ -5,7 +5,7 @@
 <div class="container" style="margin-top:100px;">
 
     <!-- validazione -->
-    @if ($errors->any())
+    <!-- @if ($errors->any())
     <div class="alert alert-danger">
         <ul>
             @foreach ($errors->all() as $error )
@@ -16,7 +16,9 @@
             @endforeach
         </ul>
     </div>
-    @endif
+    @endif -->
+    @include('partials.errors')
+   
     <!-- /validazione -->
     <h1>Modifica: {{$project->title}}</h1>
     <form action="{{ route('admin.projects.update', ['project'=>$project->slug]) }}" method="POST">
