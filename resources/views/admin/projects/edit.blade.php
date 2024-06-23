@@ -21,7 +21,7 @@
    
     <!-- /validazione -->
     <h1>Modifica: {{$project->title}}</h1>
-    <form action="{{ route('admin.projects.update', ['project'=>$project->slug]) }}" method="POST">
+    <form action="{{ route('admin.projects.update', ['project'=>$project->slug]) }}" method="POST" enctype="multipart/form-data">
         {{-- Cookie per far riconoscere il form al server --}}
         @csrf
         @method('PUT')
@@ -54,6 +54,15 @@
             <label for="description" class="form-label">Descrizione</label>
             <textarea class="form-control" id="description" name="description" rows="3"> {{old('description', $project->description)}}</textarea>
         </div>
+
+        <div>
+      <label for="cover_image">Immagine di copertina</label>
+      <input type="file" name="cover_image" id="cover_image">
+    </div>
+    <div>
+      <h4>Preview dell'immagine</h4>
+      <img src="{{ asset('storage/' . $project->cover_image) }}" alt="">
+    </div>
 
         <div class="d-flex justify-content-around mt-3 mb-3 align-content-center">
             <a href="{{route('admin.projects.index') }}" class="btn btn-outline-secondary ">Indietro</a>

@@ -4,10 +4,10 @@
 <div class="container" style="margin-top:100px;">
   <h3>Aggiungi un nuovo Comic all'archivio</h3>
 
- @include('partials.errors')
+  @include('partials.errors')
 
 
-  <form action="{{ route('admin.projects.store') }}" method="POST">
+  <form action="{{ route('admin.projects.store') }}" method="POST" enctype="multipart/form-data">
     {{-- Cookie per far riconoscere il form al server --}}
     @csrf
 
@@ -22,13 +22,13 @@
     </div>
 
     <div class="mb-3">
-        <label for="status" class="form-label">Tipologia</label>
-        <select class="form-select" id="status" name="status">
-          <option >Seleziona</option>
-          <option @selected(old('status') === 'ongoing') value="ongoing">In lavorazione</option>
-          <option @selected(old('status') === 'completed') value="completed">Completato</option>
-        </select>
-      </div>
+      <label for="status" class="form-label">Tipologia</label>
+      <select class="form-select" id="status" name="status">
+        <option>Seleziona</option>
+        <option @selected(old('status')==='ongoing' ) value="ongoing">In lavorazione</option>
+        <option @selected(old('status')==='completed' ) value="completed">Completato</option>
+      </select>
+    </div>
 
 
     <div class="mb-3">
@@ -36,7 +36,12 @@
       <textarea class="form-control" id="description" name="description" rows="3"> {{old('description')}}</textarea>
     </div>
 
-  
+    <div class="mb-3">
+      <label for="cover_image" class="form-label">Immagine di copertina</label>
+      <input class="form-control" type="file" id="cover_image" name="cover_image">
+    </div>
+
+
     <div class="d-flex justify-content-around mt-3 mb-3 align-content-center align-items-center">
       <a href="{{route('admin.projects.index') }}" class="btn btn-outline-secondary ">Indietro</a>
       <button class="btn btn-outline-primary" type="submit">Salva</button>
