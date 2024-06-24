@@ -80,13 +80,20 @@
                       </a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link text-white  d-flex align-items-center gap-2" href="{{ route('admin.projects.create') }}">
-                      <i class="fa-solid fa-plus fa-sm fa-fw"></i>
-                      <span class="flex-fill">Aggiungi Nuovo Progetto</span>
-                    </a>
+                      <a class="nav-link text-white  d-flex align-items-center gap-2" href="{{ route('admin.projects.create') }}">
+                        <i class="fa-solid fa-plus fa-sm fa-fw"></i>
+                        <span class="flex-fill">Aggiungi Nuovo Progetto</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a class="nav-link text-white d-flex align-items-center gap-2" href="{{ route('admin.projects.trash') }}">
+                        <i class="fa-solid fa-plus fa-sm fa-fw"></i>
+                        <span class="flex-fill">Visualizza Cestino</span>
+                      </a>
+                    </li>
+
+                  </ul>
               </li>
-            </ul>
-            </li>
             </ul>
 
 

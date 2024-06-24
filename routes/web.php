@@ -26,8 +26,15 @@ Route::middleware('auth')
     ->name('admin.') // inizio di ogni nome delle rotte del gruppo
     ->group(function () {
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+          // Rotte per gestire i progetti eliminati
+          Route::get('projects/trash', [ProjectController::class, 'trash'])->name('projects.trash'); // Mostra tutti gli elementi eliminati
+        
+
         Route::resource('projects', ProjectController::class)->
         parameters(['projects'=>'project:slug']);
+
+
+        
     });
 
 require __DIR__ . '/auth.php';

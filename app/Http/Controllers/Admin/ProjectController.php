@@ -113,4 +113,17 @@ class ProjectController extends Controller
         $project->delete();
         return redirect()->route('admin.projects.index')->with('message', $project->title . ' è stato eliminato');
     }
+
+
+//controller per file in eliminazione
+
+    public function trash()
+    {
+        dd('Reached here');
+    
+        return view('admin.projects.trash');
+    }
+
 }
+
+
